@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 internal class PictureProperties
 {
@@ -15,4 +15,5 @@ internal class PictureProperties
     internal long CropRight { get; set; } = 0;
     internal long CropTop { get; set; } = 0;
     internal long CropBottom { get; set; } = 0;
+}
 }

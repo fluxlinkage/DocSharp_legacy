@@ -5,7 +5,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax;
 using DocSharp.Docx;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class ListInfo
 {
@@ -81,4 +81,5 @@ public class ListRenderer : DocxObjectRenderer<ListBlock>
         renderer.WriteChildren(obj);
         renderer.ActiveList.Pop();
     }
+}
 }

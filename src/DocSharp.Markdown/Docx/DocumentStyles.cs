@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Markdig.Renderers.Docx;
+namespace Markdig.Renderers.Docx { 
 
 public class DocumentStyles
 {
@@ -38,4 +38,5 @@ public class DocumentStyles
     {
         return MarkdownStyles.ContainsValue(styleName) || Headings.ContainsValue(styleName);
     }
+}
 }

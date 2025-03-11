@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Primitives;
+namespace DocSharp.Primitives {
 
 public enum BorderValue
 {
@@ -14,4 +14,5 @@ public enum BorderValue
     Bottom,
     TopLeftToBottomRightDiagonal,
     TopRightToBottomLeftDiagonal
+}
 }

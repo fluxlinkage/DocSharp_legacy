@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DocSharp.IO;
 using DocumentFormat.OpenXml.Packaging;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class DocxExtensions
 {
@@ -64,7 +64,6 @@ public static class DocxExtensions
                 case ".markdown":
                 case ".mkd":
                 case ".mkdn":
-                case ".mkdwn":
                 case ".markdn":
                 case ".mdown":
                 case ".mdwn":
@@ -82,4 +81,5 @@ public static class DocxExtensions
             document.SaveTo(fs, format.Value);
         }
     }
+}
 }

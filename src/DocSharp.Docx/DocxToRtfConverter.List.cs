@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -275,7 +275,7 @@ public partial class DocxToRtfConverter
                         {
                             var formatParts = levelText.Split('%');
                             string before = formatParts[0];
-                            string after = formatParts[1].TrimStart(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+                            string after = formatParts[1].TrimStart('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
                             if (before != string.Empty)
                             {
                                 sb.Append(@"{\pntxtb " + before + "}");
@@ -298,4 +298,5 @@ public partial class DocxToRtfConverter
             }
         }
     }
+}
 }

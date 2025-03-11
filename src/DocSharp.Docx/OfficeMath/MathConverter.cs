@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml;
 using M = DocumentFormat.OpenXml.Math;
 
-namespace DocSharp.Docx.OfficeMath;
+namespace DocSharp.Docx.OfficeMath {
 
 public class MathConverter
 {
@@ -60,4 +60,5 @@ public class MathConverter
                 break;
         }
     }
+}
 }

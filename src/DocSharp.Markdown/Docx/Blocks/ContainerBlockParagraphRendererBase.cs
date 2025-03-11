@@ -1,6 +1,6 @@
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks { 
 
 public abstract class ContainerBlockParagraphRendererBase<T> : ParagraphRendererBase<T> where T : ContainerBlock
 {
@@ -8,4 +8,5 @@ public abstract class ContainerBlockParagraphRendererBase<T> : ParagraphRenderer
     {
         renderer.WriteChildren(block);
     }
+}
 }

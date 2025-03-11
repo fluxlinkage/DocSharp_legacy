@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using DocSharp.Helpers;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing.Wordprocessing;
@@ -13,7 +14,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Text = DocumentFormat.OpenXml.Wordprocessing.Text;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx { 
 
 public static class OpenXmlHelpers
 {
@@ -543,4 +544,5 @@ public static class OpenXmlHelpers
         // A4 page size is 210 mm x 297 mm = 11906 x 16838
         return new Size(11906, 16838);
     }
+}
 }

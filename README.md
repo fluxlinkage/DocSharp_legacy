@@ -1,3 +1,5 @@
+This fork ports the original code to VS2019+.Net Framework 4.7. 
+
 # DocSharp
 
 DocSharp is a pure C# library to convert between document formats without Office interop or native dependencies.

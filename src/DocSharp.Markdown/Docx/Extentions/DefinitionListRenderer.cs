@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Markdig.Extensions.DefinitionLists;
 
-namespace Markdig.Renderers.Docx.Extensions;
+namespace Markdig.Renderers.Docx.Extensions {
 
 public class DefinitionListRenderer : DocxObjectRenderer<DefinitionList>
 {
@@ -13,4 +13,5 @@ public class DefinitionListRenderer : DocxObjectRenderer<DefinitionList>
     {
 
     }
+}
 }

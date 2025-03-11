@@ -7,7 +7,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class ParagraphHelpers
 {
@@ -56,7 +56,7 @@ public static class ParagraphHelpers
 
         if (text == null) return para;
 
-        var splits = text.NormalizeNewLines().Split("\n");
+        var splits = text.NormalizeNewLines().Split('\n');
 
         var afterNewline = false;
         var run = new Run();
@@ -112,4 +112,5 @@ public static class ParagraphHelpers
         var p = textElement.Ancestors<Paragraph>().FirstOrDefault();
         return p;
     }
+}
 }

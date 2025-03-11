@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class StylesHelpers
 {
@@ -86,4 +86,5 @@ public static class StylesHelpers
 
         return styleId;
     }
+}
 }

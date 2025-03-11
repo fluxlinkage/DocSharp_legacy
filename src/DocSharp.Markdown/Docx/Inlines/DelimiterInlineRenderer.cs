@@ -1,7 +1,7 @@
 using DocumentFormat.OpenXml.Math;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class DelimiterInlineRenderer : DocxObjectRenderer<DelimiterInline>
 {
@@ -9,4 +9,5 @@ public class DelimiterInlineRenderer : DocxObjectRenderer<DelimiterInline>
     { 
         WriteText(renderer, obj.ToLiteral());
     }
+}
 }

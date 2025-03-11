@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.IO;
+namespace DocSharp.IO {
 
 public static class ResourceDownloader
 {
@@ -40,4 +40,5 @@ public static class ResourceDownloader
         return null;
     }
 
+}
 }

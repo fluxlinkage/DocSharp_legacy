@@ -1,6 +1,6 @@
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks { 
 
 public abstract class LeafBlockParagraphRendererBase<T> : ParagraphRendererBase<T> where T : LeafBlock
 {
@@ -8,4 +8,5 @@ public abstract class LeafBlockParagraphRendererBase<T> : ParagraphRendererBase<
     {
         WriteLeafInline(renderer, block);
     }
+}
 }

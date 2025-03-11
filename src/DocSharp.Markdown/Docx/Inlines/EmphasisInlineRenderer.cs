@@ -1,7 +1,7 @@
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class EmphasisInlineRenderer : DocxObjectRenderer<EmphasisInline>
 {
@@ -70,4 +70,5 @@ public class EmphasisInlineRenderer : DocxObjectRenderer<EmphasisInline>
             renderer.TextFormat.Pop();
         }        
     }
+}
 }

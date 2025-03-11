@@ -1,28 +1,121 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
-  <!-- NuGet package -->
-  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADFED668-B765-478D-AC0D-DD5B6F7CB6DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocSharp.Docx</RootNamespace>
     <AssemblyName>DocSharp.Docx</AssemblyName>
-    <AssemblyTitle>DocSharp.Docx</AssemblyTitle>
-    <PackageId>DocSharp.Docx</PackageId>
-    <Title>DocSharp.Docx</Title>
-    <Description>.NET library for converting documents. The DocSharp.Docx package provides DOCX to RTF, Markdown and plain text conversions.</Description>
-    <PackageTags>docx doc rtf markdown convert openxml</PackageTags>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DocumentFormat.OpenXml" Version="3.2.0" />
+    <Reference Include="DocumentFormat.OpenXml, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.3.3.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.Framework.3.3.0\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=9.0.0.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Text.Encoding.CodePages.9.0.2\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\DocSharp.Common\DocSharp.Common.csproj" />
+    <Compile Include="DocumentDefaultSettings.cs" />
+    <Compile Include="DocxConverterBase.cs" />
+    <Compile Include="DocxExtensions.cs" />
+    <Compile Include="DocxToMarkdownConverter.cs" />
+    <Compile Include="DocxToRtfConverter.Borders.cs" />
+    <Compile Include="DocxToRtfConverter.cs" />
+    <Compile Include="DocxToRtfConverter.DrawingML.cs" />
+    <Compile Include="DocxToRtfConverter.Fields.cs" />
+    <Compile Include="DocxToRtfConverter.FootnoteEndnote.cs" />
+    <Compile Include="DocxToRtfConverter.Frame.cs" />
+    <Compile Include="DocxToRtfConverter.HeaderFooter.cs" />
+    <Compile Include="DocxToRtfConverter.List.cs" />
+    <Compile Include="DocxToRtfConverter.Math.cs" />
+    <Compile Include="DocxToRtfConverter.Objects.cs" />
+    <Compile Include="DocxToRtfConverter.Paragraph.cs" />
+    <Compile Include="DocxToRtfConverter.Picture.cs" />
+    <Compile Include="DocxToRtfConverter.Run.cs" />
+    <Compile Include="DocxToRtfConverter.Section.cs" />
+    <Compile Include="DocxToRtfConverter.Shading.cs" />
+    <Compile Include="DocxToRtfConverter.Table.cs" />
+    <Compile Include="DocxToRtfConverter.Tabs.cs" />
+    <Compile Include="DocxToRtfConverter.Vml.cs" />
+    <Compile Include="DocxToRtf\Enums.cs" />
+    <Compile Include="DocxToRtf\FootnoteEndnoteType.cs" />
+    <Compile Include="DocxToRtf\PictureProperties.cs" />
+    <Compile Include="DocxToRtf\RtfBorderMapper.cs" />
+    <Compile Include="DocxToRtf\RtfHighlightMapper.cs" />
+    <Compile Include="DocxToRtf\RtfUnderlineMapper.cs" />
+    <Compile Include="DocxToTxtConverter.cs" />
+    <Compile Include="Helpers\BookmarkHelpers.cs" />
+    <Compile Include="Helpers\ImageHelpers.cs" />
+    <Compile Include="Helpers\ListHelpers.cs" />
+    <Compile Include="Helpers\OpenXmlHelpers.cs" />
+    <Compile Include="Helpers\ParagraphHelpers.cs" />
+    <Compile Include="Helpers\RunHelpers.cs" />
+    <Compile Include="Helpers\StylesHelpers.cs" />
+    <Compile Include="Helpers\TableHelpers.cs" />
+    <Compile Include="OfficeMath\MathConverter.cs" />
+    <Compile Include="OfficeMath\MathOutputType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DocSharp.Common\DocSharp.Common.csproj">
+      <Project>{c453d223-98a9-4f6d-81e4-80b916b19579}</Project>
+      <Name>DocSharp.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

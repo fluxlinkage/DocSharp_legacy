@@ -10,7 +10,7 @@
  * PARTICULAR PURPOSE.
  */
 
-namespace DocSharp;
+namespace DocSharp {
 
 /// <summary>
 /// Specifies the measurement values of a Html Unit.
@@ -77,4 +77,4 @@ public static class UnitMetricHelper
                unit != UnitMetric.Unitless && unit != UnitMetric.Auto;
     }
 }
-
+}

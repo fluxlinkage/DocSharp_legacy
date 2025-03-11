@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class HtmlInlineRenderer : DocxObjectRenderer<HtmlInline>
 {
@@ -73,4 +73,5 @@ public class HtmlInlineRenderer : DocxObjectRenderer<HtmlInline>
                 break;
         }
     }
+}
 }

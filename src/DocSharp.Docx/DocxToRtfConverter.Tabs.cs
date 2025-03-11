@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using DocSharp.Helpers;
 using DocSharp.Docx.Rtf;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -115,4 +115,5 @@ public partial class DocxToRtfConverter
         }
         sb.Append("{\\ptabldot \\pindtabqr}");
     }
+}
 }

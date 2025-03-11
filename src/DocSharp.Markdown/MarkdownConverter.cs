@@ -6,7 +6,7 @@ using Markdig;
 using Markdig.Renderers.Docx;
 using Markdig.Syntax;
 
-namespace DocSharp.Markdown;
+namespace DocSharp.Markdown {
 
 public class MarkdownConverter
 {
@@ -176,4 +176,5 @@ public class MarkdownConverter
         };
         renderer.Render(markdown.Document);
     }
+}
 }

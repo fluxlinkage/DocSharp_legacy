@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Markdig.Extensions.Figures;
 
-namespace Markdig.Renderers.Docx.Extensions;
+namespace Markdig.Renderers.Docx.Extensions {
 
 public class FigureRenderer : DocxObjectRenderer<Figure>
 {
@@ -13,4 +13,5 @@ public class FigureRenderer : DocxObjectRenderer<Figure>
     {
 
     }
+}
 }

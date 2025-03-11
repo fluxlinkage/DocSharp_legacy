@@ -8,7 +8,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class LinkInlineRenderer : DocxObjectRenderer<LinkInline>
 {
@@ -49,7 +49,7 @@ public class LinkInlineRenderer : DocxObjectRenderer<LinkInline>
                 {
                     // Relative URIs like "file.txt" or "/file.txt" need be changed to
                     // "./file.txt" to work in Microsoft Word, otherwise the document will result corrupted.
-                    fixedUrl = "./" + obj.Url.TrimStart(['/', '\\']);
+                    fixedUrl = "./" + obj.Url.TrimStart('/', '\\');
                 }
                 else
                 {
@@ -134,7 +134,11 @@ public class LinkInlineRenderer : DocxObjectRenderer<LinkInline>
                 // otherwise it is interpreted as file and relative links starting with . or .. won't work properly.
                 // Note that ImagesPathUri should not be a file path.
                 string normalizedBaseUri = renderer.ImagesBaseUri.Trim('\\', '/') + @"\";
-                if (Uri.TryCreate(Path.TrimEndingDirectorySeparator(normalizedBaseUri) + '/', 
+                if (normalizedBaseUri.EndsWith("/") || normalizedBaseUri.EndsWith("\\"))
+                {
+                    normalizedBaseUri = normalizedBaseUri.Substring(0, normalizedBaseUri.Length - 1);
+                }
+                if (Uri.TryCreate(normalizedBaseUri + '/', 
                                   UriKind.Absolute, out Uri? baseUri) && baseUri != null)
                 {
                     uri = new Uri(baseUri, uri);
@@ -290,4 +294,5 @@ public class LinkInlineRenderer : DocxObjectRenderer<LinkInline>
                                           name.Value.Equals(anchorId, StringComparison.OrdinalIgnoreCase));
         return bookmarkName?.FirstOrDefault()?.Value ?? "";
     }
+}
 }

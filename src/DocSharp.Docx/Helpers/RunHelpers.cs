@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class RunHelpers
 {
@@ -26,4 +26,5 @@ public static class RunHelpers
 
         return run.RunProperties;
     }
+}
 }

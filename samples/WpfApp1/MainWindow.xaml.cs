@@ -22,8 +22,9 @@ using DocSharp.Binary.StructuredStorage.Reader;
 using DocSharp.Docx;
 using DocSharp.Markdown;
 using HtmlToOpenXml;
+using System;
 
-namespace WpfApp1;
+namespace WpfApp1 {
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
@@ -43,15 +44,12 @@ public partial class MainWindow : Window
         };
         if (ofd.ShowDialog(this) == true)
         {
-            var folderDlg = new OpenFolderDialog()
-            {
-                Multiselect = false,
-            };
-            if (folderDlg.ShowDialog(this) == true)
+            var folderDlg = new System.Windows.Forms.FolderBrowserDialog();
+            if (folderDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    string outputDir = folderDlg.FolderName;
+                    string outputDir = folderDlg.SelectedPath;
                     foreach (string file in ofd.FileNames)
                     {
                         string inputExt = Path.GetExtension(file).ToLower();
@@ -59,7 +57,7 @@ public partial class MainWindow : Window
                         {
                             string outputExt = inputExt + "x";
                             string baseName = Path.GetFileNameWithoutExtension(file);
-                            string outputFile = Path.Join(outputDir, baseName + outputExt);
+                            string outputFile = outputDir + "/" + baseName + outputExt;
                             switch (inputExt)
                             {
                                 case ".doc":
@@ -305,12 +303,13 @@ public partial class MainWindow : Window
                     {
                         ImagesBaseUri = Path.GetDirectoryName(ofd.FileName)
                     };
-                    using var ms = new MemoryStream();
-                    using (var document = converter.ToWordprocessingDocument(markdown, ms))
-                    {
-                        document.SaveTo(sfd.FileName, DocSharp.IO.SaveFormat.Rtf);
+                        using (var ms = new MemoryStream()) { 
+                        using (var document = converter.ToWordprocessingDocument(markdown, ms))
+                        {
+                            document.SaveTo(sfd.FileName, DocSharp.IO.SaveFormat.Rtf);
+                        }
+                        }
                     }
-                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -568,4 +567,5 @@ public partial class MainWindow : Window
             }
         }
     }
+}
 }

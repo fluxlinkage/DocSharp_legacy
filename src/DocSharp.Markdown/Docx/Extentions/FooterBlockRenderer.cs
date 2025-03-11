@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Markdig.Extensions.Footers;
 
-namespace Markdig.Renderers.Docx.Extensions;
+namespace Markdig.Renderers.Docx.Extensions { 
 
 public class FooterBlockRenderer : DocxObjectRenderer<FooterBlock>
 {
@@ -13,4 +13,5 @@ public class FooterBlockRenderer : DocxObjectRenderer<FooterBlock>
     {
 
     }
+}
 }

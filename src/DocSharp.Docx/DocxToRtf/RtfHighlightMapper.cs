@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 internal class RtfHighlightMapper
 {
@@ -81,4 +81,5 @@ internal class RtfHighlightMapper
         }
         return null;
     }
+}
 }

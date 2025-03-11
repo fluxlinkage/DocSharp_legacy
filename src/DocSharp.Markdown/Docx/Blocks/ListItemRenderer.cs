@@ -3,7 +3,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax;
 using DocSharp.Docx;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class ListItemRenderer : ContainerBlockParagraphRendererBase<ListItemBlock>
 {
@@ -22,4 +22,5 @@ public class ListItemRenderer : ContainerBlockParagraphRendererBase<ListItemBloc
             };
         }
     } 
+}
 }

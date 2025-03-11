@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocumentFormat.OpenXml.Math;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -14,4 +14,5 @@ public partial class DocxToRtfConverter
     {
         // TODO
     }
+}
 }

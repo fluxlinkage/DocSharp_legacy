@@ -8,7 +8,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class HtmlBlockRenderer : DocxObjectRenderer<HtmlBlock>
 {
@@ -35,4 +35,5 @@ public class HtmlBlockRenderer : DocxObjectRenderer<HtmlBlock>
         //    renderer.Cursor.Write(altChunk);
         //}
     }
+}
 }

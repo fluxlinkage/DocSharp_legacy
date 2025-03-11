@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Binary.OpenXmlLib;
+namespace DocSharp.Binary.OpenXmlLib {
 
 public enum WordprocessingDocumentType
 {
@@ -72,4 +72,5 @@ public enum PresentationDocumentType
     /// PowerPoint Macro-Enabled Show (*.ppsm)
     /// </summary>    
     MacroEnabledSlideshow,
+}
 }

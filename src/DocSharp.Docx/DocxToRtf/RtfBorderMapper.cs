@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 internal static class RtfBorderMapper
 {
@@ -392,6 +392,7 @@ internal static class RtfBorderMapper
         else
             // Assume single
             return @"\brdrs";
-        
+
     }
+}
 }

@@ -5,7 +5,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public abstract class DocxConverterBase
 {
@@ -89,7 +89,7 @@ public abstract class DocxConverterBase
     /// <param name="outputStream">The output stream.</param>
     public void Convert(WordprocessingDocument inputDocument, Stream outputStream)
     {
-        using (var streamWriter = new StreamWriter(outputStream, leaveOpen: true))
+        using (var streamWriter = new StreamWriter(outputStream, System.Text.Encoding.UTF8, 512, true))
         {
             streamWriter.Write(ConvertToString(inputDocument));
         }
@@ -112,7 +112,7 @@ public abstract class DocxConverterBase
     /// <param name="outputStream">The output stream.</param>
     public void Convert(string inputFilePath, Stream outputStream)
     {
-        using (var streamWriter = new StreamWriter(outputStream, leaveOpen: true))
+        using (var streamWriter = new StreamWriter(outputStream, System.Text.Encoding.UTF8, 512, true))
         {
             streamWriter.Write(ConvertToString(inputFilePath));
         }
@@ -135,7 +135,7 @@ public abstract class DocxConverterBase
     /// <param name="outputStream">The output stream.</param>
     public void Convert(Stream inputStream, Stream outputStream)
     {
-        using (var streamWriter = new StreamWriter(outputStream, leaveOpen: true))
+        using (var streamWriter = new StreamWriter(outputStream, System.Text.Encoding.UTF8, 512, true))
         {
             streamWriter.Write(ConvertToString(inputStream));
         }
@@ -158,7 +158,7 @@ public abstract class DocxConverterBase
     /// <param name="outputStream">The output stream.</param>
     public void Convert(byte[] inputBytes, Stream outputStream)
     {
-        using (var streamWriter = new StreamWriter(outputStream, leaveOpen: true))
+        using (var streamWriter = new StreamWriter(outputStream, System.Text.Encoding.UTF8, 512, true))
         {
             streamWriter.Write(ConvertToString(inputBytes));
         }
@@ -484,4 +484,5 @@ public abstract class DocxConverterBase
     internal abstract void ProcessContinuationSeparatorMark(ContinuationSeparatorMark continuationSepMark, StringBuilder sb);
     internal abstract void ProcessDocumentBackground(DocumentBackground background, StringBuilder sb);
     internal abstract void ProcessMathElement(OpenXmlElement element, StringBuilder sb);
+}
 }

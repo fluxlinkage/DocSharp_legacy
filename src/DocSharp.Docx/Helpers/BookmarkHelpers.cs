@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class BookmarkHelpers
 {
@@ -14,4 +14,5 @@ public static class BookmarkHelpers
         return bookmarkEnd.GetMainDocumentPart()?.Document.Descendants<BookmarkStart>()
                .FirstOrDefault(b => b.Id == bookmarkEnd.Id)?.Name;
     }
+}
 }

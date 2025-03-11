@@ -2,7 +2,7 @@ using System.Linq;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace Markdig.Renderers.Docx.Extensions;
+namespace Markdig.Renderers.Docx.Extensions { 
 
 public class TableRenderer : DocxObjectRenderer<Markdig.Extensions.Tables.Table>
 {
@@ -55,4 +55,5 @@ public class TableRenderer : DocxObjectRenderer<Markdig.Extensions.Tables.Table>
         }
         renderer.Cursor.SetAfter(table);
     }
+}
 }

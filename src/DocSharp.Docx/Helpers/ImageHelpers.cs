@@ -8,7 +8,7 @@ using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class ImageHelpers
 {
@@ -109,4 +109,5 @@ public static class ImageHelpers
         }
         return imageFormat;
     }
+}
 }

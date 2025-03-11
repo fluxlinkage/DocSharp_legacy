@@ -5,7 +5,7 @@ using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
 using DocSharp.Docx;
 
-namespace Markdig.Renderers.Docx;
+namespace Markdig.Renderers.Docx {
 
 public abstract class DocxObjectRenderer<T> : MarkdownObjectRenderer<DocxDocumentRenderer, T> where T : MarkdownObject
 {
@@ -16,28 +16,28 @@ public abstract class DocxObjectRenderer<T> : MarkdownObjectRenderer<DocxDocumen
 
         WriteObject(renderer, obj);
     }
-    
+
     public void WriteText(DocxDocumentRenderer renderer, string text)
     {
         var run = new Run(new Text(text) { Space = SpaceProcessingModeValues.Preserve });
 
-        if (renderer.TextFormat.TryPeek(out var props))
+        if (renderer.TextFormat.Count > 0)
         {
-            run.RunProperties = new RunProperties(props.OuterXml);
+            run.RunProperties = renderer.TextFormat.Peek();
         }
-
-        if (renderer.TextStyle.TryPeek(out var runStyle))
+        if (renderer.TextStyle.Count > 0)
         {
+            var runStyle = renderer.TextStyle.Peek();
             run.SetStyle(runStyle);
         }
 
         renderer.Cursor.Write(run);
     }
-    
+
     public void WriteLeafInline(DocxDocumentRenderer renderer, LeafBlock leafBlock)
     {
         if (leafBlock is null) throw new ArgumentException($"Leaf block is empty");
-        var inline = (Inline) leafBlock.Inline!;
+        var inline = (Inline)leafBlock.Inline!;
 
         while (inline != null)
         {
@@ -52,14 +52,15 @@ public abstract class DocxObjectRenderer<T> : MarkdownObjectRenderer<DocxDocumen
         {
             renderer.TextStyle.Push(style);
         }
-        
+
         WriteText(renderer, text);
 
         if (style != null)
         {
             renderer.TextStyle.Pop();
-        }        
+        }
     }
 
     protected abstract void WriteObject(DocxDocumentRenderer renderer, T obj);
+}
 }

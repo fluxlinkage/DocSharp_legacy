@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Helpers;
+namespace DocSharp.Helpers {
 
 public static class StringHelpers
 {
@@ -431,7 +431,7 @@ public static class StringHelpers
             case '\u005D': return "‽";
             case '\u005E': return "🙹";
             case '\u005F': return "🙺";
-            
+
             case '\u0060': return "🙻";
             case '\u0061': return "🙦";
             case '\u0062': return "🙤";
@@ -640,7 +640,7 @@ public static class StringHelpers
             case '\u003D': return "⮥";
             case '\u003E': return "⮦";
             case '\u003F': return "⮧";
-            
+
             case '\u0040': return "⮐";
             case '\u0041': return "⮑";
             case '\u0042': return "⮒";
@@ -707,7 +707,7 @@ public static class StringHelpers
             case '\u007C': return "🞀";
             case '\u007D': return "🞂";
             case '\u007E': return "🞁";
-            
+
             case '\u0080': return "🞃";
             case '\u0081': return "▲";
             case '\u0082': return "▼";
@@ -724,7 +724,7 @@ public static class StringHelpers
             case '\u008D': return "🠔";
             case '\u008E': return "🠖";
             case '\u008F': return "🠕";
-            
+
             case '\u0090': return "🠗";
             case '\u0091': return "🠘";
             case '\u0092': return "🠚";
@@ -792,7 +792,7 @@ public static class StringHelpers
             case '\u00cd': return "⮬";
             case '\u00ce': return "⮭";
             case '\u00cf': return "⮮";
-            
+
             case '\u00d0': return "⮯";
             case '\u00d1': return "🡠";
             case '\u00d2': return "🡢";
@@ -809,7 +809,7 @@ public static class StringHelpers
             case '\u00dd': return "🡴";
             case '\u00de': return "🡵";
             case '\u00df': return "🡷";
-            
+
             case '\u00e0': return "🡶";
             case '\u00e1': return "🢀";
             case '\u00e2': return "🢂";
@@ -826,7 +826,7 @@ public static class StringHelpers
             case '\u00ed': return "🢔";
             case '\u00ee': return "🢖";
             case '\u00ef': return "🢕";
-            
+
             case '\u00f0': return "🢗";
             default: return "";
         }
@@ -843,23 +843,23 @@ public static class StringHelpers
             case '\u0020': return " ";
             case '\u0021': return "🕷";
             case '\u0022': return "🕸";
-            case '\u0023': return "🕲"; 
+            case '\u0023': return "🕲";
             case '\u0024': return "🕶";
             case '\u0025': return "🏆";
             case '\u0026': return "🏅";
             case '\u0027': return "🖇";
             case '\u0028': return "🗨";
             case '\u0029': return "💬";
-            case '\u002A': return "🗰"; 
-            case '\u002B': return "🗱"; 
+            case '\u002A': return "🗰";
+            case '\u002B': return "🗱";
             case '\u002C': return "🌶";
             case '\u002D': return "🎗";
-            case '\u002E': return "🙾"; 
-            case '\u002F': return "🙼"; 
-            
-            case '\u0030': return "🗕"; 
-            case '\u0031': return "🗖"; 
-            case '\u0032': return "🗗"; 
+            case '\u002E': return "🙾";
+            case '\u002F': return "🙼";
+
+            case '\u0030': return "🗕";
+            case '\u0031': return "🗖";
+            case '\u0032': return "🗗";
             case '\u0033': return "◀";
             case '\u0034': return "▶";
             case '\u0035': return "▲";
@@ -871,7 +871,7 @@ public static class StringHelpers
             case '\u003B': return "⏸";
             case '\u003C': return "⏹";
             case '\u003D': return "⏺";
-            case '\u003E': return "🗚"; 
+            case '\u003E': return "🗚";
             case '\u003F': return "🗳";
 
             case '\u0040': return "🛠";
@@ -890,7 +890,7 @@ public static class StringHelpers
             case '\u004D': return "🏔";
             case '\u004E': return "👁";
             case '\u004F': return "👂";
-            
+
             case '\u0050': return "🏞";
             case '\u0051': return "🏕";
             case '\u0052': return "🛤";
@@ -898,15 +898,15 @@ public static class StringHelpers
             case '\u0054': return "🛳";
             case '\u0055': return "🔊";
             case '\u0056': return "📢";
-            case '\u0057': return "🕨"; 
+            case '\u0057': return "🕨";
             case '\u0058': return "🔈";
-            case '\u0059': return "🎔"; 
+            case '\u0059': return "🎔";
             case '\u005A': return "💐";
-            case '\u005B': return "🗬"; 
-            case '\u005C': return "🙽"; 
+            case '\u005B': return "🗬";
+            case '\u005C': return "🙽";
             case '\u005D': return "💭";
-            case '\u005E': return "🗪"; 
-            case '\u005F': return "🗫"; 
+            case '\u005E': return "🗪";
+            case '\u005F': return "🗫";
 
             case '\u0060': return "🔄";
             case '\u0061': return "✔";
@@ -920,7 +920,7 @@ public static class StringHelpers
             case '\u0069': return "ℹ";
             case '\u006A': return "🛩";
             case '\u006B': return "🛰";
-            case '\u006C': return "🟈"; 
+            case '\u006C': return "🟈";
             case '\u006D': return "🕴";
             case '\u006E': return "⚫";
             case '\u006F': return "🛥";
@@ -936,15 +936,15 @@ public static class StringHelpers
             case '\u0078': return "🚫";
             case '\u0079': return "⛔";
             case '\u007A': return "🚭";
-            case '\u007B': return "🗮"; 
+            case '\u007B': return "🗮";
             case '\u007C': return "|";
             case '\u007D': return "🗯";
             case '\u007E': return "⚡";
 
             case '\u0080': return "🚹";
             case '\u0081': return "🚺";
-            case '\u0082': return "🛉"; 
-            case '\u0083': return "🛊"; 
+            case '\u0082': return "🛉";
+            case '\u0083': return "🛊";
             case '\u0084': return "🚼";
             case '\u0085': return "👽";
             case '\u0086': return "🏋";
@@ -967,13 +967,13 @@ public static class StringHelpers
             case '\u0096': return "💋";
             case '\u0097': return "🗣";
             case '\u0098': return "⭐";
-            case '\u0099': return "🖄"; 
+            case '\u0099': return "🖄";
             case '\u009A': return "📨";
             case '\u009B': return "✉";
-            case '\u009C': return "🖆"; 
+            case '\u009C': return "🖆";
             case '\u009D': return "📄";
-            case '\u009E': return "🖺"; 
-            case '\u009F': return "🖻"; 
+            case '\u009E': return "🖺";
+            case '\u009F': return "🖻";
 
             case '\u00A0': return "🕵";
             case '\u00A1': return "🕰";
@@ -1002,7 +1002,7 @@ public static class StringHelpers
             case '\u00B7': return "🎬";
             case '\u00B8': return "📽";
             case '\u00B9': return "📹";
-            case '\u00BA': return "📾"; 
+            case '\u00BA': return "📾";
             case '\u00BB': return "📻";
             case '\u00BC': return "🎚";
             case '\u00BD': return "🎛";
@@ -1011,16 +1011,16 @@ public static class StringHelpers
 
             case '\u00C0': return "🖥";
             case '\u00C1': return "🖦";
-            case '\u00C2': return "🖧"; 
+            case '\u00C2': return "🖧";
             case '\u00C3': return "🕹";
             case '\u00C4': return "🎮";
             case '\u00C5': return "📞";
-            case '\u00C6': return "🕼"; 
+            case '\u00C6': return "🕼";
             case '\u00C7': return "📟";
             case '\u00C8': return "📱";
             case '\u00C9': return "☎";
             case '\u00CA': return "🖨";
-            case '\u00CB': return "🖩"; 
+            case '\u00CB': return "🖩";
             case '\u00CC': return "📁";
             case '\u00CD': return "💾";
             case '\u00CE': return "🗜";
@@ -1057,11 +1057,11 @@ public static class StringHelpers
             case '\u00EA': return "🔺";
             case '\u00EB': return "📌";
             case '\u00EC': return "🎓";
-            case '\u00ED': return "🗤"; 
-            case '\u00EE': return "🗥"; 
-            case '\u00EF': return "🗦"; 
+            case '\u00ED': return "🗤";
+            case '\u00EE': return "🗥";
+            case '\u00EF': return "🗦";
 
-            case '\u00F0': return "🗧"; 
+            case '\u00F0': return "🗧";
             case '\u00F1': return "✈";
             case '\u00F2': return "🐿";
             case '\u00F3': return "🐦";
@@ -1080,4 +1080,5 @@ public static class StringHelpers
             default: return "";
         }
     }
+}
 }

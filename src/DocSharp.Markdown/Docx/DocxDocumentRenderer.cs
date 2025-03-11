@@ -11,7 +11,7 @@ using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
 
 
-namespace Markdig.Renderers.Docx;
+namespace Markdig.Renderers.Docx {
 
 public class DocxDocumentRenderer : RendererBase
 {
@@ -99,4 +99,5 @@ public class DocxDocumentRenderer : RendererBase
         Write(markdownObject);
         return this;
     }   
+}
 }

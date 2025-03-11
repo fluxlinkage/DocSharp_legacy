@@ -1,25 +1,63 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-    <RootNamespace>DocSharp</RootNamespace>
-  </PropertyGroup>
-
-  <!-- NuGet package -->
-  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C453D223-98A9-4F6D-81E4-80B916B19579}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocSharp.Common</RootNamespace>
     <AssemblyName>DocSharp.Common</AssemblyName>
-    <AssemblyTitle>DocSharp.Common</AssemblyTitle>
-    <PackageId>DocSharp.Common</PackageId>
-    <Title>DocSharp.Common</Title>
-    <Description>.NET library for converting documents (Open XML, Office 97-2003, RTF, Markdown).</Description>
-    <PackageTags>docx doc rtf markdown convert</PackageTags>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="Collections\FastStringCollection.cs" />
+    <Compile Include="Helpers\RtfHelpers.cs" />
+    <Compile Include="Helpers\StringHelpers.cs" />
+    <Compile Include="IO\ImageHeader.cs" />
+    <Compile Include="IO\ImageTypeExtensions.cs" />
+    <Compile Include="IO\ResourceDownloader.cs" />
+    <Compile Include="IO\SaveFormat.cs" />
+    <Compile Include="IO\SequentialBinaryReader.cs" />
+    <Compile Include="Primitives\BorderValue.cs" />
+    <Compile Include="Primitives\DashStyle.cs" />
+    <Compile Include="Primitives\Unit.cs" />
+    <Compile Include="Primitives\UnitMetric.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

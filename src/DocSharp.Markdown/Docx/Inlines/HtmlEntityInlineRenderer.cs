@@ -1,7 +1,7 @@
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class HtmlEntityInlineRenderer : DocxObjectRenderer<HtmlEntityInline>
 {
@@ -9,4 +9,5 @@ public class HtmlEntityInlineRenderer : DocxObjectRenderer<HtmlEntityInline>
     {
         WriteText(renderer, obj.Transcoded.ToString());
     }
+}
 }

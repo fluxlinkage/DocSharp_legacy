@@ -12,7 +12,7 @@
 using System;
 using System.Globalization;
 
-namespace DocSharp;
+namespace DocSharp {
 
 /// <summary>
 /// Represents a Html Unit (ie: 120px, 10em, ...).
@@ -205,4 +205,5 @@ readonly struct Unit
     {
         get { return IsValid && Type != UnitMetric.Percent && Type != UnitMetric.Auto; }
     }
+}
 }

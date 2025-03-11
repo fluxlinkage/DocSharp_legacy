@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp;
+namespace DocSharp {
 
 public enum DashStyle
 {
@@ -14,4 +14,5 @@ public enum DashStyle
     DashDot = 3,
     DashDotDot = 4,
     Custom = 5
+}
 }

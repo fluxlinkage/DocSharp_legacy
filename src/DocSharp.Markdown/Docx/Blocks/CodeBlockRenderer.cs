@@ -2,7 +2,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class CodeBlockRenderer : LeafBlockParagraphRendererBase<CodeBlock>
 {
@@ -30,4 +30,5 @@ public class CodeBlockRenderer : LeafBlockParagraphRendererBase<CodeBlock>
             }
         }
     }
+}
 }

@@ -5,7 +5,7 @@ using System.Text;
 using DocSharp.Helpers;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -382,4 +382,5 @@ public partial class DocxToRtfConverter
 
     }
 
+}
 }

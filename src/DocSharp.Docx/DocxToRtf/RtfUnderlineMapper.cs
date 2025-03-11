@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx.Rtf;
+namespace DocSharp.Docx.Rtf {
 
 internal static class RtfUnderlineMapper
 {
@@ -53,4 +53,5 @@ internal static class RtfUnderlineMapper
         else 
             return null;
     }
+}
 }

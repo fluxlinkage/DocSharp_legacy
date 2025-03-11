@@ -14,7 +14,7 @@
  */
 using System.IO;
 
-namespace DocSharp.IO;
+namespace DocSharp.IO {
 
 /// <summary>
 /// Reads primitive data types as binary values with endianness support.
@@ -64,4 +64,5 @@ sealed class SequentialBinaryReader : BinaryReader
             return (uint) (ReadByte() << 24 | ReadByte() << 16 | ReadByte() << 8  | ReadByte());
         return (uint) (ReadByte() | ReadByte() <<  8 | ReadByte() << 16 | ReadByte() << 24);
     }
+}
 }

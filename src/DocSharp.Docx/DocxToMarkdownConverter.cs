@@ -11,7 +11,7 @@ using DocumentFormat.OpenXml.Vml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DrawingML = DocumentFormat.OpenXml.Drawing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public class DocxToMarkdownConverter : DocxConverterBase
 {
@@ -235,7 +235,8 @@ public class DocxToMarkdownConverter : DocxConverterBase
         {
             if (_specialChars.Contains(c))
             {
-                sb.Append(new string(['\\', c]));
+                sb.Append('\\');
+                sb.Append(c);
             }
             else if (c == '\r')
             {
@@ -371,7 +372,7 @@ public class DocxToMarkdownConverter : DocxConverterBase
         if (mainDocumentPart?.GetPartById(relId!) is ImagePart imagePart)
         {
             string fileName = System.IO.Path.GetFileName(imagePart.Uri.OriginalString);
-            string actualFilePath = System.IO.Path.Join(ImagesOutputFolder, fileName);
+            string actualFilePath = ImagesOutputFolder+"/"+fileName;
             Uri uri;
             if (ImagesBaseUriOverride is null)
             {
@@ -383,9 +384,12 @@ public class DocxToMarkdownConverter : DocxConverterBase
                 ImagesBaseUriOverride = ImagesBaseUriOverride.Replace('\\', '/');
                 if (ImagesBaseUriOverride != string.Empty)
                 {
-                    ImagesBaseUriOverride = System.IO.Path.TrimEndingDirectorySeparator(ImagesBaseUriOverride);
+                    if (ImagesBaseUriOverride.EndsWith("/") || ImagesBaseUriOverride.EndsWith("\\"))
+                    {
+                        ImagesBaseUriOverride = ImagesBaseUriOverride.Substring(0, ImagesBaseUriOverride.Length - 1);
+                    }
                     ImagesBaseUriOverride += "/";
-                }
+                    }
                 ImagesBaseUriOverride += fileName;
                 uri = new Uri(ImagesBaseUriOverride, UriKind.RelativeOrAbsolute);
             }
@@ -465,4 +469,5 @@ public class DocxToMarkdownConverter : DocxConverterBase
     internal override void ProcessContinuationSeparatorMark(ContinuationSeparatorMark continuationSepMark, StringBuilder sb) { }
     internal override void ProcessDocumentBackground(DocumentBackground background, StringBuilder sb) { }
 
+}
 }

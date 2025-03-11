@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.IO;
+namespace DocSharp.IO {
 
 public enum SaveFormat
 {
     Docx,
     Rtf,
     Markdown
+}
 }

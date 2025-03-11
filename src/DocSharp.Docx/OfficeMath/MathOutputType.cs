@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Docx.OfficeMath;
+namespace DocSharp.Docx.OfficeMath {
 
 public enum MathOutputType
 {
@@ -13,4 +13,5 @@ public enum MathOutputType
     MathML,
     Rtf,
     PlainText,
+}
 }

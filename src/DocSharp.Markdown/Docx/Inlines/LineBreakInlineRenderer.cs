@@ -3,7 +3,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class LineBreakInlineRenderer : DocxObjectRenderer<LineBreakInline>
 {
@@ -22,4 +22,5 @@ public class LineBreakInlineRenderer : DocxObjectRenderer<LineBreakInline>
             }));
         }
     }
+}
 }

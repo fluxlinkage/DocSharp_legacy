@@ -21,7 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.XPath;
 
-namespace DocSharp.IO;
+namespace DocSharp.IO {
 
 /// <summary>
 /// Utility class to extract some information of an image file without reading the entire file.
@@ -52,7 +52,7 @@ public static class ImageHeader
         Svg 
     }
 
-    private static readonly byte[] pngSignatureBytes = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
+    private static readonly byte[] pngSignatureBytes = { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A };
 
     private static readonly Dictionary<byte[], FileType> imageFormatDecoders = new()
     {
@@ -114,7 +114,7 @@ public static class ImageHeader
             // Check for SVG
             if (stream.Length > 4)
             {
-                using (var sr = new StreamReader(stream, leaveOpen: true))
+                using (var sr = new StreamReader(stream, System.Text.Encoding.UTF8, false, 512, true))
                 {
                     char[] buffer = new char[5];
                     sr.Read(buffer, 0, 5);
@@ -687,7 +687,8 @@ public static class ImageHeader
                 var viewBox = nav.GetAttribute("viewBox", string.Empty);
                 if (!string.IsNullOrWhiteSpace(viewBox))
                 {
-                    var rectParts = viewBox.Split([' ', ',', ';'], StringSplitOptions.RemoveEmptyEntries);
+                    char[] separator = { ' ', ',', ';' };
+                    var rectParts = viewBox.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                     if (rectParts.Length == 4)
                     {
                         width = Unit.Parse(rectParts[2], UnitMetric.Pixel);
@@ -708,4 +709,5 @@ public static class ImageHeader
         }
         return Size.Empty;
     }
+}
 }

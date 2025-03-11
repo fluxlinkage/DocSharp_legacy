@@ -1,37 +1,140 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
-  <!-- NuGet package -->
-  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D15B332-AC67-4E0B-80B8-1AB599D0B88C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocSharp.Markdown</RootNamespace>
     <AssemblyName>DocSharp.Markdown</AssemblyName>
-    <AssemblyTitle>DocSharp.Markdown</AssemblyTitle>
-    <PackageId>DocSharp.Markdown</PackageId>
-    <Title>DocSharp.Markdown</Title>
-    <Description>.NET library for converting documents. The DocSharp.Markdown package provides Markdown to DOCX conversion.</Description>
-    <PackageTags>docx doc rtf markdown convert openxml markdig</PackageTags>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
-    <None Remove="Docx\Resources\markdown-template.docx" />
+    <Reference Include="DocumentFormat.OpenXml, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.3.3.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.Framework.3.3.0\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig, Version=0.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Markdig.0.40.0\lib\net462\Markdig.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=9.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.Abstractions.9.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.9.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
-
   <ItemGroup>
+    <Compile Include="Docx\Blocks\CodeBlockRenderer.cs" />
+    <Compile Include="Docx\Blocks\ContainerBlockParagraphRendererBase.cs" />
+    <Compile Include="Docx\Blocks\HeadingRenderer.cs" />
+    <Compile Include="Docx\Blocks\HtmlBlockRenderer.cs" />
+    <Compile Include="Docx\Blocks\LeafBlockParagraphRendererBase.cs" />
+    <Compile Include="Docx\Blocks\ListItemRenderer.cs" />
+    <Compile Include="Docx\Blocks\ListRenderer.cs" />
+    <Compile Include="Docx\Blocks\ParagraphRenderer.cs" />
+    <Compile Include="Docx\Blocks\ParagraphRendererBase.cs" />
+    <Compile Include="Docx\Blocks\QuoteBlockRenderer.cs" />
+    <Compile Include="Docx\Blocks\ThematicBreakRenderer.cs" />
+    <Compile Include="Docx\DocumentStyles.cs" />
+    <Compile Include="Docx\DocumentTreeCursor.cs" />
+    <Compile Include="Docx\DocxDocumentRenderer.cs" />
+    <Compile Include="Docx\DocxObjectRenderer.cs" />
+    <Compile Include="Docx\DocxTemplateHelper.cs" />
+    <Compile Include="Docx\Extentions\DefinitionListRenderer.cs" />
+    <Compile Include="Docx\Extentions\FigureRenderer.cs" />
+    <Compile Include="Docx\Extentions\FooterBlockRenderer.cs" />
+    <Compile Include="Docx\Extentions\MathBlockRenderer.cs" />
+    <Compile Include="Docx\Extentions\MathInlineRenderer.cs" />
+    <Compile Include="Docx\Extentions\TableRenderer.cs" />
+    <Compile Include="Docx\Extentions\TaskListRenderer.cs" />
+    <Compile Include="Docx\Inlines\AutolinkInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\CodeInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\DelimiterInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\EmphasisInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\HtmlEntityInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\HtmlInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\LineBreakInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\LinkInlineRenderer.cs" />
+    <Compile Include="Docx\Inlines\LiteralInlineRenderer.cs" />
+    <Compile Include="MarkdownConverter.cs" />
+    <Compile Include="MarkdownSource.cs" />
+    <Compile Include="MarkdownUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <EmbeddedResource Include="Docx\Resources\markdown-template.docx" />
+    <None Include="packages.config" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.40.0" />
+    <ProjectReference Include="..\DocSharp.Common\DocSharp.Common.csproj">
+      <Project>{c453d223-98a9-4f6d-81e4-80b916b19579}</Project>
+      <Name>DocSharp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocSharp.Docx\DocSharp.Docx.csproj">
+      <Project>{adfed668-b765-478d-ac0d-dd5b6f7cb6df}</Project>
+      <Name>DocSharp.Docx</Name>
+    </ProjectReference>
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DocSharp.Common\DocSharp.Common.csproj" />
-    <ProjectReference Include="..\DocSharp.Docx\DocSharp.Docx.csproj" />
-  </ItemGroup>
-
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

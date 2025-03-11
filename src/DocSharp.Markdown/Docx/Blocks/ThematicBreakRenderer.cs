@@ -2,7 +2,7 @@ using System.Linq;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class ThematicBreakRenderer : LeafBlockParagraphRendererBase<ThematicBreakBlock>
 {
@@ -14,4 +14,5 @@ public class ThematicBreakRenderer : LeafBlockParagraphRendererBase<ThematicBrea
             p.AppendChild(new Run(new Text("")));
         }
     }
+}
 }

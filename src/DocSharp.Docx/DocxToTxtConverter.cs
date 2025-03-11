@@ -8,7 +8,7 @@ using DocSharp.Helpers;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx { 
 
 public class DocxToTxtConverter : DocxConverterBase
 {
@@ -160,4 +160,5 @@ public class DocxToTxtConverter : DocxConverterBase
     internal override void ProcessContinuationSeparatorMark(ContinuationSeparatorMark continuationSepMark, StringBuilder sb) { }
     internal override void ProcessDocumentBackground(DocumentBackground background, StringBuilder sb) { }
 
+}
 }

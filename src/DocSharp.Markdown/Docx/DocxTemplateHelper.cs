@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace Markdig.Renderers.Docx;
+namespace Markdig.Renderers.Docx {
 
 internal class DocxTemplateHelper
 {
@@ -99,4 +99,5 @@ internal class DocxTemplateHelper
             }
         }
     }
+}
 }

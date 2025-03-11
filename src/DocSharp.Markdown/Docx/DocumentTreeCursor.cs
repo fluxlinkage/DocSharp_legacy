@@ -5,7 +5,7 @@ using System.Data;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace Markdig.Renderers.Docx;
+namespace Markdig.Renderers.Docx { 
 
 public class DocumentTreeCursor
 {
@@ -81,4 +81,5 @@ public class DocumentTreeCursor
             Container.InsertAfter(element, InsertAfter);
         }
     }
+}
 }

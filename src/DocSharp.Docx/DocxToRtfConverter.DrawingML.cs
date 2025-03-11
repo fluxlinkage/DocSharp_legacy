@@ -10,7 +10,7 @@ using ShapeProperties = DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties;
 using BlipFill = DocumentFormat.OpenXml.Drawing.Pictures.BlipFill;
 using Pictures = DocumentFormat.OpenXml.Drawing.Pictures;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 public partial class DocxToRtfConverter
 {
     internal override void ProcessDrawing(Drawing drawing, StringBuilder sb)
@@ -55,4 +55,5 @@ public partial class DocxToRtfConverter
             }
         }
     }
+}
 }

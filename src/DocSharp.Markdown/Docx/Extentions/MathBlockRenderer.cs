@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Markdig.Extensions.Mathematics;
 
-namespace Markdig.Renderers.Docx.Extensions;
+namespace Markdig.Renderers.Docx.Extensions {
 
 public class MathBlockRenderer : DocxObjectRenderer<MathBlock>
 {
@@ -13,4 +13,5 @@ public class MathBlockRenderer : DocxObjectRenderer<MathBlock>
     {
 
     }
+}
 }

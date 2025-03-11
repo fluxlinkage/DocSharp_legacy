@@ -136,14 +136,16 @@ namespace DocSharp.Binary.Spreadsheet.XlsFileFormat
                 Type cls;
                 if (TypeToRecordClassMapping.TryGetValue((ushort)id, out cls))
                 {
+                    Type[] types = { typeof(IStreamReader), typeof(RecordType), typeof(ushort) };
                     var constructor = cls.GetConstructor(
-                        [typeof(IStreamReader), typeof(RecordType), typeof(ushort)]
+                        types
                         );
 
                     try
                     {
+                        object[] parameters = { reader, id, length };
                         result = (BiffRecord)constructor.Invoke(
-                            [reader, id, length]
+                            parameters
                             );
                     }
                     catch (TargetInvocationException e)

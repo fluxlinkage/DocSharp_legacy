@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public  partial class DocxToRtfConverter
 {
@@ -49,4 +49,5 @@ public  partial class DocxToRtfConverter
             sb.Append(@"\brdrframe");
         }
     }
+}
 }

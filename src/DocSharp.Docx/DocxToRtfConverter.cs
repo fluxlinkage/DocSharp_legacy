@@ -10,7 +10,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DrawingML = DocumentFormat.OpenXml.Drawing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter : DocxConverterBase
 {
@@ -169,4 +169,5 @@ public partial class DocxToRtfConverter : DocxConverterBase
             sb.Append(@"\line ");
     }
 
+}
 }

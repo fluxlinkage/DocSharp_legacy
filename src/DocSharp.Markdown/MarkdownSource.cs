@@ -2,7 +2,7 @@ using System.IO;
 using Markdig;
 using Markdig.Syntax;
 
-namespace DocSharp.Markdown;
+namespace DocSharp.Markdown {
 
 /// <summary>
 /// Represents a source of Markdown content. It implicitly converts from a 
@@ -78,4 +78,4 @@ public class MarkdownSource
         return MarkdownSource.FromStream(stream);
     }
 }
-
+}

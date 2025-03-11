@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public enum ShadingType
 {
@@ -18,4 +18,5 @@ public enum BordersType
     Character,
     Paragraph,
     TableCell
+}
 }

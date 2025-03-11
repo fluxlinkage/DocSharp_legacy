@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class ListHelpers
 {
@@ -137,4 +137,5 @@ public static class ListHelpers
         return numbering;
     }
 
+}
 }

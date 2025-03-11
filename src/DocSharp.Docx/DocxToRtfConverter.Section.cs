@@ -7,7 +7,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -405,4 +405,5 @@ public partial class DocxToRtfConverter
         }        
         sb.AppendLineCrLf();
     }
+}
 }

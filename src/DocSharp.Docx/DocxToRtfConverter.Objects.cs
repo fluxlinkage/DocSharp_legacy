@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public partial class DocxToRtfConverter
 {
@@ -12,4 +12,5 @@ public partial class DocxToRtfConverter
     {
 
     }
+}
 }

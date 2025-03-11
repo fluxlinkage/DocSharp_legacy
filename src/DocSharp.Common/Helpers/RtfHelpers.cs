@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace DocSharp.Helpers;
+namespace DocSharp.Helpers {
 
 public static class RtfHelpers
 {
@@ -40,7 +40,8 @@ public static class RtfHelpers
         {
             if (c == '\\' || c == '{' || c == '}')
             {
-                sb.Append(new string(['\\', c]));
+                    sb.Append('\\');
+                    sb.Append(c);
             }
             else if (c == '\t')
             {
@@ -105,4 +106,5 @@ public static class RtfHelpers
             return 1024; // None/unspecified
         }
     }
+}
 }

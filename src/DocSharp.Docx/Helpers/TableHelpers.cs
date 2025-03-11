@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public static class TableHelpers
 {
@@ -159,4 +159,5 @@ public enum CellBorderType
     Right,
     Top,
     Bottom
+}
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Markdown;
+namespace DocSharp.Markdown {
 
 internal static class MarkdownUtils
 {
@@ -18,4 +18,5 @@ internal static class MarkdownUtils
         // Trim leading/trailing spaces and replace other space with dash (-)
         return new string(normalized).Trim().Replace(" ", "-").ToLower();
     }
+}
 }

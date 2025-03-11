@@ -1,24 +1,675 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>disable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
-  <!-- NuGet package -->
-  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{751BAF95-6239-4615-86DC-E5FDC5FE85C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocSharp.Binary.Xls</RootNamespace>
     <AssemblyName>DocSharp.Binary.Xls</AssemblyName>
-    <AssemblyTitle>DocSharp.Binary.Xls</AssemblyTitle>
-    <PackageId>DocSharp.Binary.Xls</PackageId>
-    <Title>DocSharp.Binary.Xls</Title>
-    <Description>.NET library for converting documents. The DocSharp.Binary.Xls package provides XLS (Excel 97-2003) to XLSX (Open XML) conversion.</Description>
-    <PackageTags>xls xlsx convert excel openxml</PackageTags>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DocSharp.Binary.Common\DocSharp.Binary.Common.csproj" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=9.0.0.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Text.Encoding.CodePages.9.0.2\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AbstractAxisMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AbstractChartGroupMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AbstractChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AreaChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AreaFormatMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\AxisMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\BarChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\BubbleChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\CatMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\ChartContext.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\ChartspaceMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\DataLabelMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\DataPointMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\LayoutMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\LegendMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\LineChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\LineFormatMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\OfPieChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\PieChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\PlotAreaMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\RadarChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\ScatterChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\SeriesMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\ShapePropertiesMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\SurfaceChartMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\TitleMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartMapping\ValMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ChartsheetMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\Converter.cs" />
+    <Compile Include="SpreadsheetMLMapping\DrawingMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ExcelContext.cs" />
+    <Compile Include="SpreadsheetMLMapping\ExcelMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\ExternalLinkMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\FormulaMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\MacroBinaryMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\PageSetupMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\SSTMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\StyleMappingHelper.cs" />
+    <Compile Include="SpreadsheetMLMapping\StylesMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\TextBodyMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\WindowMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\WorkbookMapping.cs" />
+    <Compile Include="SpreadsheetMLMapping\WorksheetMapping.cs" />
+    <Compile Include="XlsFileFormat\BiffRecord.cs" />
+    <Compile Include="XlsFileFormat\BiffRecordAttribute.cs" />
+    <Compile Include="XlsFileFormat\BiffString.cs" />
+    <Compile Include="XlsFileFormat\ChartAxisIdGenerator.cs" />
+    <Compile Include="XlsFileFormat\ChartFormatIdGenerator.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AiSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AttachedLabelSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AutoFilterSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AxesSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AxisParentSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AxmSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\AxsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\BackgroundSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ChartFormatsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ChartSheetContentSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ChartSheetSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\CrtMlfrtSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\CrtSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\CustomViewSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\DataSheetSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\DatSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\DftTextSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\DropBarSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\DvAxisSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\FontListSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\FrameSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\GelFrameSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\IvAxisSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\LdSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ObjectsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ObjSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\OfficeGraphBiffRecordSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\PageSetupSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\PicfSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ProtectionSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\SeriesAxisSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\SeriesDataSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\SeriesFormatSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\ShapePropsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\SortData12Sequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\SsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\TextObjectSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\TextPropsSequence.cs" />
+    <Compile Include="XlsFileFormat\ChartSequences\WindowSequence.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\AbstractCellData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\BlankCell.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\ChartSheetData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\ColumnInfoData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\CRNData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\ExternSheetData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\FormulaCell.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\HyperlinkData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\MergeCellData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\NumberCell.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\RowData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\SharedFormulaData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\SheetData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\SSTData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\StringCell.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\StringFormatAssignment.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\SupBookData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\WorkBookData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\WorkSheetData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\XCTData.cs" />
+    <Compile Include="XlsFileFormat\DataContainer\XTIData.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\Extractor.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\FileInformationExtractor.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\ParseException.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\StreamExtractor.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\WorkbookExtractor.cs" />
+    <Compile Include="XlsFileFormat\DataExtraction\WorksheetExtractor.cs" />
+    <Compile Include="XlsFileFormat\ExcelHelperClass.cs" />
+    <Compile Include="XlsFileFormat\Exception\ExtractorException.cs" />
+    <Compile Include="XlsFileFormat\Exception\RecordParseException.cs" />
+    <Compile Include="XlsFileFormat\Ptg\AbstractPtg.cs" />
+    <Compile Include="XlsFileFormat\Ptg\FtabValues.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAdd.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgArea.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgArea3d.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAreaErr.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAreaErr3d.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAreaN.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrChoose.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrGoto.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrIf.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrSemi.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrSpace.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgAttrSum.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgBool.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgConcat.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgDiv.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgEq.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgErr.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgExp.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgFunc.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgFuncVar.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgGe.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgGt.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgInt.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgIsect.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgLe.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgLt.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgMemErr.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgMemFunc.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgMissArg.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgMul.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgName.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgNameX.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgNe.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgNotDocumented.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgNum.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgNumber.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgParen.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgPercent.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgPower.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgRef.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgRef3d.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgRefErr.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgRefErr3d.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgRefN.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgStr.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgSub.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgUminus.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgUnion.cs" />
+    <Compile Include="XlsFileFormat\Ptg\PtgUplus.cs" />
+    <Compile Include="XlsFileFormat\Records\AbstractCellContent.cs" />
+    <Compile Include="XlsFileFormat\Records\Addin.cs" />
+    <Compile Include="XlsFileFormat\Records\Addmenu.cs" />
+    <Compile Include="XlsFileFormat\Records\AlRuns.cs" />
+    <Compile Include="XlsFileFormat\Records\Area.cs" />
+    <Compile Include="XlsFileFormat\Records\AreaFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\Array.cs" />
+    <Compile Include="XlsFileFormat\Records\AttachedLabel.cs" />
+    <Compile Include="XlsFileFormat\Records\AutoFilter.cs" />
+    <Compile Include="XlsFileFormat\Records\AutoFilter12.cs" />
+    <Compile Include="XlsFileFormat\Records\AutoFilterInfo.cs" />
+    <Compile Include="XlsFileFormat\Records\AUTOWEBPUB.cs" />
+    <Compile Include="XlsFileFormat\Records\AxcExt.cs" />
+    <Compile Include="XlsFileFormat\Records\AxesUsed.cs" />
+    <Compile Include="XlsFileFormat\Records\Axis.cs" />
+    <Compile Include="XlsFileFormat\Records\AxisLine.cs" />
+    <Compile Include="XlsFileFormat\Records\AxisParent.cs" />
+    <Compile Include="XlsFileFormat\Records\Backup.cs" />
+    <Compile Include="XlsFileFormat\Records\Bar.cs" />
+    <Compile Include="XlsFileFormat\Records\Begin.cs" />
+    <Compile Include="XlsFileFormat\Records\BkHim.cs" />
+    <Compile Include="XlsFileFormat\Records\Blank.cs" />
+    <Compile Include="XlsFileFormat\Records\BlankGraph.cs" />
+    <Compile Include="XlsFileFormat\Records\BOF.cs" />
+    <Compile Include="XlsFileFormat\Records\BookBool.cs" />
+    <Compile Include="XlsFileFormat\Records\BookExt.cs" />
+    <Compile Include="XlsFileFormat\Records\BoolErr.cs" />
+    <Compile Include="XlsFileFormat\Records\BopPop.cs" />
+    <Compile Include="XlsFileFormat\Records\BopPopCustom.cs" />
+    <Compile Include="XlsFileFormat\Records\BottomMargin.cs" />
+    <Compile Include="XlsFileFormat\Records\BoundSheet8.cs" />
+    <Compile Include="XlsFileFormat\Records\BRAI.cs" />
+    <Compile Include="XlsFileFormat\Records\BuiltInFnGroupCount.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcCount.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcDelta.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcIter.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcMode.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcPrecision.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcRefMode.cs" />
+    <Compile Include="XlsFileFormat\Records\CalcSaveRecalc.cs" />
+    <Compile Include="XlsFileFormat\Records\CatLab.cs" />
+    <Compile Include="XlsFileFormat\Records\CatSerRange.cs" />
+    <Compile Include="XlsFileFormat\Records\CellWatch.cs" />
+    <Compile Include="XlsFileFormat\Records\CF.cs" />
+    <Compile Include="XlsFileFormat\Records\CF12.cs" />
+    <Compile Include="XlsFileFormat\Records\CFEx.cs" />
+    <Compile Include="XlsFileFormat\Records\Chart.cs" />
+    <Compile Include="XlsFileFormat\Records\Chart3d.cs" />
+    <Compile Include="XlsFileFormat\Records\Chart3DBarShape.cs" />
+    <Compile Include="XlsFileFormat\Records\ChartFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\ChartFrtInfo.cs" />
+    <Compile Include="XlsFileFormat\Records\ClrtClient.cs" />
+    <Compile Include="XlsFileFormat\Records\CodeName.cs" />
+    <Compile Include="XlsFileFormat\Records\CodePage.cs" />
+    <Compile Include="XlsFileFormat\Records\ColInfo.cs" />
+    <Compile Include="XlsFileFormat\Records\Compat12.cs" />
+    <Compile Include="XlsFileFormat\Records\CompressPictures.cs" />
+    <Compile Include="XlsFileFormat\Records\CondFmt.cs" />
+    <Compile Include="XlsFileFormat\Records\CondFmt12.cs" />
+    <Compile Include="XlsFileFormat\Records\Continue.cs" />
+    <Compile Include="XlsFileFormat\Records\ContinueFrt.cs" />
+    <Compile Include="XlsFileFormat\Records\ContinueFrt11.cs" />
+    <Compile Include="XlsFileFormat\Records\ContinueFrt12.cs" />
+    <Compile Include="XlsFileFormat\Records\COORDLIST.cs" />
+    <Compile Include="XlsFileFormat\Records\Country.cs" />
+    <Compile Include="XlsFileFormat\Records\CrErr.cs" />
+    <Compile Include="XlsFileFormat\Records\CRN.cs" />
+    <Compile Include="XlsFileFormat\Records\CRTCOOPT.cs" />
+    <Compile Include="XlsFileFormat\Records\CrtLayout12.cs" />
+    <Compile Include="XlsFileFormat\Records\CrtLine.cs" />
+    <Compile Include="XlsFileFormat\Records\CrtLink.cs" />
+    <Compile Include="XlsFileFormat\Records\CrtMlFrt.cs" />
+    <Compile Include="XlsFileFormat\Records\CrtMlFrtContinue.cs" />
+    <Compile Include="XlsFileFormat\Records\Dat.cs" />
+    <Compile Include="XlsFileFormat\Records\DataFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\DataLabExt.cs" />
+    <Compile Include="XlsFileFormat\Records\DataLabExtContents.cs" />
+    <Compile Include="XlsFileFormat\Records\Date1904.cs" />
+    <Compile Include="XlsFileFormat\Records\DBCell.cs" />
+    <Compile Include="XlsFileFormat\Records\DbOrParamQry.cs" />
+    <Compile Include="XlsFileFormat\Records\DBQueryExt.cs" />
+    <Compile Include="XlsFileFormat\Records\DCon.cs" />
+    <Compile Include="XlsFileFormat\Records\DConBin.cs" />
+    <Compile Include="XlsFileFormat\Records\DConn.cs" />
+    <Compile Include="XlsFileFormat\Records\DConName.cs" />
+    <Compile Include="XlsFileFormat\Records\DConRef.cs" />
+    <Compile Include="XlsFileFormat\Records\DefaultRowHeight.cs" />
+    <Compile Include="XlsFileFormat\Records\DefaultText.cs" />
+    <Compile Include="XlsFileFormat\Records\DefColWidth.cs" />
+    <Compile Include="XlsFileFormat\Records\DELMENU.cs" />
+    <Compile Include="XlsFileFormat\Records\Dimensions.cs" />
+    <Compile Include="XlsFileFormat\Records\DocRoute.cs" />
+    <Compile Include="XlsFileFormat\Records\DropBar.cs" />
+    <Compile Include="XlsFileFormat\Records\DropDownObjIds.cs" />
+    <Compile Include="XlsFileFormat\Records\DSF.cs" />
+    <Compile Include="XlsFileFormat\Records\Dv.cs" />
+    <Compile Include="XlsFileFormat\Records\DVal.cs" />
+    <Compile Include="XlsFileFormat\Records\DXF.cs" />
+    <Compile Include="XlsFileFormat\Records\DxGCol.cs" />
+    <Compile Include="XlsFileFormat\Records\EDG.cs" />
+    <Compile Include="XlsFileFormat\Records\End.cs" />
+    <Compile Include="XlsFileFormat\Records\EndBlock.cs" />
+    <Compile Include="XlsFileFormat\Records\EndObject.cs" />
+    <Compile Include="XlsFileFormat\Records\EOF.cs" />
+    <Compile Include="XlsFileFormat\Records\Excel9File.cs" />
+    <Compile Include="XlsFileFormat\Records\EXTERNCOUNT.cs" />
+    <Compile Include="XlsFileFormat\Records\ExternName.cs" />
+    <Compile Include="XlsFileFormat\Records\ExternSheet.cs" />
+    <Compile Include="XlsFileFormat\Records\ExtSST.cs" />
+    <Compile Include="XlsFileFormat\Records\ExtString.cs" />
+    <Compile Include="XlsFileFormat\Records\Fbi.cs" />
+    <Compile Include="XlsFileFormat\Records\Fbi2.cs" />
+    <Compile Include="XlsFileFormat\Records\Feat.cs" />
+    <Compile Include="XlsFileFormat\Records\FeatHdr.cs" />
+    <Compile Include="XlsFileFormat\Records\FeatHdr11.cs" />
+    <Compile Include="XlsFileFormat\Records\FEATINFO.cs" />
+    <Compile Include="XlsFileFormat\Records\FEATINFO11.cs" />
+    <Compile Include="XlsFileFormat\Records\Feature11.cs" />
+    <Compile Include="XlsFileFormat\Records\Feature12.cs" />
+    <Compile Include="XlsFileFormat\Records\FilePass.cs" />
+    <Compile Include="XlsFileFormat\Records\FileSharing.cs" />
+    <Compile Include="XlsFileFormat\Records\FILESHARING2.cs" />
+    <Compile Include="XlsFileFormat\Records\FilterMode.cs" />
+    <Compile Include="XlsFileFormat\Records\FMQRY.cs" />
+    <Compile Include="XlsFileFormat\Records\FMSQRY.cs" />
+    <Compile Include="XlsFileFormat\Records\FnGroupName.cs" />
+    <Compile Include="XlsFileFormat\Records\FnGrp12.cs" />
+    <Compile Include="XlsFileFormat\Records\Font.cs" />
+    <Compile Include="XlsFileFormat\Records\FontX.cs" />
+    <Compile Include="XlsFileFormat\Records\Footer.cs" />
+    <Compile Include="XlsFileFormat\Records\ForceFullCalculation.cs" />
+    <Compile Include="XlsFileFormat\Records\Format.cs" />
+    <Compile Include="XlsFileFormat\Records\Formula.cs" />
+    <Compile Include="XlsFileFormat\Records\Frame.cs" />
+    <Compile Include="XlsFileFormat\Records\FrtFontList.cs" />
+    <Compile Include="XlsFileFormat\Records\FrtWrapper.cs" />
+    <Compile Include="XlsFileFormat\Records\GCW.cs" />
+    <Compile Include="XlsFileFormat\Records\GelFrame.cs" />
+    <Compile Include="XlsFileFormat\Records\GridSet.cs" />
+    <Compile Include="XlsFileFormat\Records\GUIDTypeLib.cs" />
+    <Compile Include="XlsFileFormat\Records\Guts.cs" />
+    <Compile Include="XlsFileFormat\Records\HCenter.cs" />
+    <Compile Include="XlsFileFormat\Records\Header.cs" />
+    <Compile Include="XlsFileFormat\Records\HeaderFooter.cs" />
+    <Compile Include="XlsFileFormat\Records\HFPicture.cs" />
+    <Compile Include="XlsFileFormat\Records\HideObj.cs" />
+    <Compile Include="XlsFileFormat\Records\HLink.cs" />
+    <Compile Include="XlsFileFormat\Records\HLinkTooltip.cs" />
+    <Compile Include="XlsFileFormat\Records\HorizontalPageBreaks.cs" />
+    <Compile Include="XlsFileFormat\Records\IFmtRecord.cs" />
+    <Compile Include="XlsFileFormat\Records\IMDATA.cs" />
+    <Compile Include="XlsFileFormat\Records\Index.cs" />
+    <Compile Include="XlsFileFormat\Records\InterfaceEnd.cs" />
+    <Compile Include="XlsFileFormat\Records\InterfaceHdr.cs" />
+    <Compile Include="XlsFileFormat\Records\Label.cs" />
+    <Compile Include="XlsFileFormat\Records\LabelSst.cs" />
+    <Compile Include="XlsFileFormat\Records\Lbl.cs" />
+    <Compile Include="XlsFileFormat\Records\LeftMargin.cs" />
+    <Compile Include="XlsFileFormat\Records\Legend.cs" />
+    <Compile Include="XlsFileFormat\Records\LegendException.cs" />
+    <Compile Include="XlsFileFormat\Records\LHNGRAPH.cs" />
+    <Compile Include="XlsFileFormat\Records\LHRECORD.cs" />
+    <Compile Include="XlsFileFormat\Records\Line.cs" />
+    <Compile Include="XlsFileFormat\Records\LineFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\List12.cs" />
+    <Compile Include="XlsFileFormat\Records\LISTCF.cs" />
+    <Compile Include="XlsFileFormat\Records\LISTCONDFMT.cs" />
+    <Compile Include="XlsFileFormat\Records\LISTDV.cs" />
+    <Compile Include="XlsFileFormat\Records\LISTFIELD.cs" />
+    <Compile Include="XlsFileFormat\Records\LISTOBJ.cs" />
+    <Compile Include="XlsFileFormat\Records\LNEXT.cs" />
+    <Compile Include="XlsFileFormat\Records\LPr.cs" />
+    <Compile Include="XlsFileFormat\Records\MarkerFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\MDB.cs" />
+    <Compile Include="XlsFileFormat\Records\MDTInfo.cs" />
+    <Compile Include="XlsFileFormat\Records\MDXKPI.cs" />
+    <Compile Include="XlsFileFormat\Records\MDXProp.cs" />
+    <Compile Include="XlsFileFormat\Records\MDXSet.cs" />
+    <Compile Include="XlsFileFormat\Records\MDXStr.cs" />
+    <Compile Include="XlsFileFormat\Records\MDXTuple.cs" />
+    <Compile Include="XlsFileFormat\Records\MergeCells.cs" />
+    <Compile Include="XlsFileFormat\Records\MKREXT.cs" />
+    <Compile Include="XlsFileFormat\Records\Mms.cs" />
+    <Compile Include="XlsFileFormat\Records\MsoDrawing.cs" />
+    <Compile Include="XlsFileFormat\Records\MsoDrawingGroup.cs" />
+    <Compile Include="XlsFileFormat\Records\MsoDrawingSelection.cs" />
+    <Compile Include="XlsFileFormat\Records\MTRSettings.cs" />
+    <Compile Include="XlsFileFormat\Records\MulBlank.cs" />
+    <Compile Include="XlsFileFormat\Records\MulRk.cs" />
+    <Compile Include="XlsFileFormat\Records\NameCmt.cs" />
+    <Compile Include="XlsFileFormat\Records\NameFnGrp12.cs" />
+    <Compile Include="XlsFileFormat\Records\NamePublish.cs" />
+    <Compile Include="XlsFileFormat\Records\Note.cs" />
+    <Compile Include="XlsFileFormat\Records\Number.cs" />
+    <Compile Include="XlsFileFormat\Records\Obj.cs" />
+    <Compile Include="XlsFileFormat\Records\ObjectLink.cs" />
+    <Compile Include="XlsFileFormat\Records\ObjProtect.cs" />
+    <Compile Include="XlsFileFormat\Records\ObProj.cs" />
+    <Compile Include="XlsFileFormat\Records\OleDbConn.cs" />
+    <Compile Include="XlsFileFormat\Records\OleObjectSize.cs" />
+    <Compile Include="XlsFileFormat\Records\Palette.cs" />
+    <Compile Include="XlsFileFormat\Records\Pane.cs" />
+    <Compile Include="XlsFileFormat\Records\Password.cs" />
+    <Compile Include="XlsFileFormat\Records\PicF.cs" />
+    <Compile Include="XlsFileFormat\Records\Pie.cs" />
+    <Compile Include="XlsFileFormat\Records\PieFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\PivotChartBits.cs" />
+    <Compile Include="XlsFileFormat\Records\PlotArea.cs" />
+    <Compile Include="XlsFileFormat\Records\PlotGrowth.cs" />
+    <Compile Include="XlsFileFormat\Records\Pls.cs" />
+    <Compile Include="XlsFileFormat\Records\PLV.cs" />
+    <Compile Include="XlsFileFormat\Records\Pos.cs" />
+    <Compile Include="XlsFileFormat\Records\PrintGrid.cs" />
+    <Compile Include="XlsFileFormat\Records\PrintRowCol.cs" />
+    <Compile Include="XlsFileFormat\Records\PrintSize.cs" />
+    <Compile Include="XlsFileFormat\Records\Prot4Rev.cs" />
+    <Compile Include="XlsFileFormat\Records\Prot4RevPass.cs" />
+    <Compile Include="XlsFileFormat\Records\Protect.cs" />
+    <Compile Include="XlsFileFormat\Records\PUB.cs" />
+    <Compile Include="XlsFileFormat\Records\Qsi.cs" />
+    <Compile Include="XlsFileFormat\Records\Qsif.cs" />
+    <Compile Include="XlsFileFormat\Records\Qsir.cs" />
+    <Compile Include="XlsFileFormat\Records\QsiSXTag.cs" />
+    <Compile Include="XlsFileFormat\Records\Radar.cs" />
+    <Compile Include="XlsFileFormat\Records\RealTimeData.cs" />
+    <Compile Include="XlsFileFormat\Records\RecalcId.cs" />
+    <Compile Include="XlsFileFormat\Records\RecipName.cs" />
+    <Compile Include="XlsFileFormat\Records\RefreshAll.cs" />
+    <Compile Include="XlsFileFormat\Records\RichTextStream.cs" />
+    <Compile Include="XlsFileFormat\Records\RightMargin.cs" />
+    <Compile Include="XlsFileFormat\Records\RK.cs" />
+    <Compile Include="XlsFileFormat\Records\Row.cs" />
+    <Compile Include="XlsFileFormat\Records\RRTabId.cs" />
+    <Compile Include="XlsFileFormat\Records\RSTRING.cs" />
+    <Compile Include="XlsFileFormat\Records\SBaseRef.cs" />
+    <Compile Include="XlsFileFormat\Records\Scatter.cs" />
+    <Compile Include="XlsFileFormat\Records\SCENARIO.cs" />
+    <Compile Include="XlsFileFormat\Records\ScenarioProtect.cs" />
+    <Compile Include="XlsFileFormat\Records\ScenMan.cs" />
+    <Compile Include="XlsFileFormat\Records\Scl.cs" />
+    <Compile Include="XlsFileFormat\Records\Selection.cs" />
+    <Compile Include="XlsFileFormat\Records\SerAuxErrBar.cs" />
+    <Compile Include="XlsFileFormat\Records\SerAuxTrend.cs" />
+    <Compile Include="XlsFileFormat\Records\SerFmt.cs" />
+    <Compile Include="XlsFileFormat\Records\Series.cs" />
+    <Compile Include="XlsFileFormat\Records\SeriesList.cs" />
+    <Compile Include="XlsFileFormat\Records\SeriesText.cs" />
+    <Compile Include="XlsFileFormat\Records\SerParent.cs" />
+    <Compile Include="XlsFileFormat\Records\SerToCrt.cs" />
+    <Compile Include="XlsFileFormat\Records\Setup.cs" />
+    <Compile Include="XlsFileFormat\Records\ShapePropsStream.cs" />
+    <Compile Include="XlsFileFormat\Records\SheetExt.cs" />
+    <Compile Include="XlsFileFormat\Records\ShrFmla.cs" />
+    <Compile Include="XlsFileFormat\Records\ShtProps.cs" />
+    <Compile Include="XlsFileFormat\Records\SIIndex.cs" />
+    <Compile Include="XlsFileFormat\Records\Sort.cs" />
+    <Compile Include="XlsFileFormat\Records\SortData.cs" />
+    <Compile Include="XlsFileFormat\Records\SOUND.cs" />
+    <Compile Include="XlsFileFormat\Records\SST.cs" />
+    <Compile Include="XlsFileFormat\Records\StartBlock.cs" />
+    <Compile Include="XlsFileFormat\Records\StartObject.cs" />
+    <Compile Include="XlsFileFormat\Records\String.cs" />
+    <Compile Include="XlsFileFormat\Records\Style.cs" />
+    <Compile Include="XlsFileFormat\Records\StyleExt.cs" />
+    <Compile Include="XlsFileFormat\Records\SUB.cs" />
+    <Compile Include="XlsFileFormat\Records\SupBook.cs" />
+    <Compile Include="XlsFileFormat\Records\Surf.cs" />
+    <Compile Include="XlsFileFormat\Records\SXAddl.cs" />
+    <Compile Include="XlsFileFormat\Records\SXADDL12.cs" />
+    <Compile Include="XlsFileFormat\Records\SXDB.cs" />
+    <Compile Include="XlsFileFormat\Records\SXDBEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SXDI.cs" />
+    <Compile Include="XlsFileFormat\Records\SXDXF.cs" />
+    <Compile Include="XlsFileFormat\Records\SXEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SXFDBType.cs" />
+    <Compile Include="XlsFileFormat\Records\SxFilt.cs" />
+    <Compile Include="XlsFileFormat\Records\SxFmla.cs" />
+    <Compile Include="XlsFileFormat\Records\SxFormat.cs" />
+    <Compile Include="XlsFileFormat\Records\SXFormula.cs" />
+    <Compile Include="XlsFileFormat\Records\SxItm.cs" />
+    <Compile Include="XlsFileFormat\Records\SxIvd.cs" />
+    <Compile Include="XlsFileFormat\Records\SXLI.cs" />
+    <Compile Include="XlsFileFormat\Records\SxName.cs" />
+    <Compile Include="XlsFileFormat\Records\SXPair.cs" />
+    <Compile Include="XlsFileFormat\Records\SXPI.cs" />
+    <Compile Include="XlsFileFormat\Records\SXPIEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SxRule.cs" />
+    <Compile Include="XlsFileFormat\Records\SxSelect.cs" />
+    <Compile Include="XlsFileFormat\Records\SXStreamID.cs" />
+    <Compile Include="XlsFileFormat\Records\SXString.cs" />
+    <Compile Include="XlsFileFormat\Records\SXTbl.cs" />
+    <Compile Include="XlsFileFormat\Records\SxTbpg.cs" />
+    <Compile Include="XlsFileFormat\Records\SXTBRGIITM.cs" />
+    <Compile Include="XlsFileFormat\Records\SXTH.cs" />
+    <Compile Include="XlsFileFormat\Records\Sxvd.cs" />
+    <Compile Include="XlsFileFormat\Records\SXVDEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SXVDTEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SXVI.cs" />
+    <Compile Include="XlsFileFormat\Records\SxView.cs" />
+    <Compile Include="XlsFileFormat\Records\SXViewEx.cs" />
+    <Compile Include="XlsFileFormat\Records\SXViewEx9.cs" />
+    <Compile Include="XlsFileFormat\Records\SXViewLink.cs" />
+    <Compile Include="XlsFileFormat\Records\SXVS.cs" />
+    <Compile Include="XlsFileFormat\Records\TABIDCONF.cs" />
+    <Compile Include="XlsFileFormat\Records\Table.cs" />
+    <Compile Include="XlsFileFormat\Records\TableStyle.cs" />
+    <Compile Include="XlsFileFormat\Records\TableStyleElement.cs" />
+    <Compile Include="XlsFileFormat\Records\TableStyles.cs" />
+    <Compile Include="XlsFileFormat\Records\Template.cs" />
+    <Compile Include="XlsFileFormat\Records\Text.cs" />
+    <Compile Include="XlsFileFormat\Records\TextPropsStream.cs" />
+    <Compile Include="XlsFileFormat\Records\Theme.cs" />
+    <Compile Include="XlsFileFormat\Records\Tick.cs" />
+    <Compile Include="XlsFileFormat\Records\TopMargin.cs" />
+    <Compile Include="XlsFileFormat\Records\TxO.cs" />
+    <Compile Include="XlsFileFormat\Records\TxtQry.cs" />
+    <Compile Include="XlsFileFormat\Records\UDDESC.cs" />
+    <Compile Include="XlsFileFormat\Records\Uncalced.cs" />
+    <Compile Include="XlsFileFormat\Records\Units.cs" />
+    <Compile Include="XlsFileFormat\Records\UnknownBiffRecord.cs" />
+    <Compile Include="XlsFileFormat\Records\UserBView.cs" />
+    <Compile Include="XlsFileFormat\Records\UserSViewBegin.cs" />
+    <Compile Include="XlsFileFormat\Records\UserSViewEnd.cs" />
+    <Compile Include="XlsFileFormat\Records\UsesELFs.cs" />
+    <Compile Include="XlsFileFormat\Records\ValueRange.cs" />
+    <Compile Include="XlsFileFormat\Records\VCenter.cs" />
+    <Compile Include="XlsFileFormat\Records\VerticalPageBreaks.cs" />
+    <Compile Include="XlsFileFormat\Records\WebPub.cs" />
+    <Compile Include="XlsFileFormat\Records\WinDoc.cs" />
+    <Compile Include="XlsFileFormat\Records\Window1.cs" />
+    <Compile Include="XlsFileFormat\Records\Window2.cs" />
+    <Compile Include="XlsFileFormat\Records\WinProtect.cs" />
+    <Compile Include="XlsFileFormat\Records\WOpt.cs" />
+    <Compile Include="XlsFileFormat\Records\WriteAccess.cs" />
+    <Compile Include="XlsFileFormat\Records\WriteProtect.cs" />
+    <Compile Include="XlsFileFormat\Records\WsBool.cs" />
+    <Compile Include="XlsFileFormat\Records\XCT.cs" />
+    <Compile Include="XlsFileFormat\Records\XF.cs" />
+    <Compile Include="XlsFileFormat\Records\XFCRC.cs" />
+    <Compile Include="XlsFileFormat\Records\XFExt.cs" />
+    <Compile Include="XlsFileFormat\Records\XL5MODIFY.cs" />
+    <Compile Include="XlsFileFormat\Records\YMult.cs" />
+    <Compile Include="XlsFileFormat\RecordType.cs" />
+    <Compile Include="XlsFileFormat\Structures\CFrtId.cs" />
+    <Compile Include="XlsFileFormat\Structures\ChartNumNillable.cs" />
+    <Compile Include="XlsFileFormat\Structures\ChartParsedFormula.cs" />
+    <Compile Include="XlsFileFormat\Structures\ControlInfo.cs" />
+    <Compile Include="XlsFileFormat\Structures\DateUnit.cs" />
+    <Compile Include="XlsFileFormat\Structures\FixedPointNumber.cs" />
+    <Compile Include="XlsFileFormat\Structures\FontInfo.cs" />
+    <Compile Include="XlsFileFormat\Structures\FormatRun.cs" />
+    <Compile Include="XlsFileFormat\Structures\FrtHeader.cs" />
+    <Compile Include="XlsFileFormat\Structures\FrtHeaderOld.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtCbls.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtCblsData.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtCf.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtCmo.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtEdoData.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtGmo.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtMacro.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtNts.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtPictFmla.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtPioGrbit.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtRbo.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtRboData.cs" />
+    <Compile Include="XlsFileFormat\Structures\FtSbs.cs" />
+    <Compile Include="XlsFileFormat\Structures\ObjectParsedFormula.cs" />
+    <Compile Include="XlsFileFormat\Structures\ObjFmla.cs" />
+    <Compile Include="XlsFileFormat\Structures\ObjLinkFmla.cs" />
+    <Compile Include="XlsFileFormat\Structures\OfficeArtClientAnchorSheet.cs" />
+    <Compile Include="XlsFileFormat\Structures\PaneType.cs" />
+    <Compile Include="XlsFileFormat\Structures\PictFmlaEmbedInfo.cs" />
+    <Compile Include="XlsFileFormat\Structures\RefU.cs" />
+    <Compile Include="XlsFileFormat\Structures\Run.cs" />
+    <Compile Include="XlsFileFormat\Structures\SheetExtOptional.cs" />
+    <Compile Include="XlsFileFormat\Structures\ShortXLUnicodeString.cs" />
+    <Compile Include="XlsFileFormat\Structures\TxOLastRun.cs" />
+    <Compile Include="XlsFileFormat\Structures\TxORuns.cs" />
+    <Compile Include="XlsFileFormat\Structures\XLUnicodeString.cs" />
+    <Compile Include="XlsFileFormat\Structures\XLUnicodeStringMin2.cs" />
+    <Compile Include="XlsFileFormat\Structures\XLUnicodeStringNoCch.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkBackWallThicknessFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkBaseTimeUnitFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkBlob.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkBool.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkChain.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkColorMappingOverride.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkDispBlanksAsFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkDouble.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkDWord.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkEnd.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkEndSurface.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkFloorThicknessFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkFormatCodeFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkHeader.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkHeightPercent.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkLogBaseFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMajorUnitFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMajorUnitTypeFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMaxFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMinFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMinorUnitFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkMinorUnitTypeFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkNoMultiLvlLbl.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkOverlay.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkPerspectiveFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkPieComboFrom12Frt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkRAngAxOffFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkRotXFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkRotYFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkShowDLblsOverMax.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkSpb.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkStart.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkStartSurface.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkString.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkStyle.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkSymbolFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkThemeOverride.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkTickLabelPositionFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkTickLabelSkipFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkTickMarkSkipFrt.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkToken.cs" />
+    <Compile Include="XlsFileFormat\Structures\XmlTkTpb.cs" />
+    <Compile Include="XlsFileFormat\StyleData\BorderData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\BorderPartData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\FillData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\FontData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\FormatData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\StyleData.cs" />
+    <Compile Include="XlsFileFormat\StyleData\StyleEnum.cs" />
+    <Compile Include="XlsFileFormat\StyleData\XFData.cs" />
+    <Compile Include="XlsFileFormat\XlsDocument.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DocSharp.Binary.Common\DocSharp.Binary.Common.csproj">
+      <Project>{65407dd2-eda1-46a3-b630-d3605c366129}</Project>
+      <Name>DocSharp.Binary.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

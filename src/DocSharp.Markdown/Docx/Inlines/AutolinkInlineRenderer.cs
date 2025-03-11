@@ -3,7 +3,7 @@ using System.Diagnostics;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Markdig.Syntax.Inlines;
 
-namespace Markdig.Renderers.Docx.Inlines;
+namespace Markdig.Renderers.Docx.Inlines {
 
 public class AutolinkInlineRenderer : DocxObjectRenderer<AutolinkInline>
 {
@@ -46,4 +46,5 @@ public class AutolinkInlineRenderer : DocxObjectRenderer<AutolinkInline>
 
         renderer.Cursor.PopAndAdvanceAfter(hl);
     }
+}
 }

@@ -1,6 +1,6 @@
 using Markdig.Syntax;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks { 
 
 public class ParagraphRenderer : LeafBlockParagraphRendererBase<ParagraphBlock>
 {
@@ -8,4 +8,5 @@ public class ParagraphRenderer : LeafBlockParagraphRendererBase<ParagraphBlock>
     {
         WriteAsParagraph(renderer, obj, renderer.Styles.MarkdownStyles["Paragraph"]);
     }
+}
 }

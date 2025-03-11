@@ -5,7 +5,7 @@ using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
 using DocSharp.Docx;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public abstract class ParagraphRendererBase<T> : DocxObjectRenderer<T> where T : Block
 {
@@ -65,4 +65,5 @@ public abstract class ParagraphRendererBase<T> : DocxObjectRenderer<T> where T :
     }
 
     protected abstract void RenderContents(DocxDocumentRenderer renderer, T block);
+}
 }

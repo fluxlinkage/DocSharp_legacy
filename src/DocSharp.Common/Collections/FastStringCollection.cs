@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace DocSharp.Collections;
+namespace DocSharp.Collections { 
 
 public class FastStringCollection
 {
@@ -99,4 +99,5 @@ public class FastStringCollection
             yield return new KeyValuePair<string, int>((string)pair.Key, (int)pair.Value!);
         }
     }
+}
 }

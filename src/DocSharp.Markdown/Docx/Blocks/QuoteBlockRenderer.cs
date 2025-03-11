@@ -1,7 +1,7 @@
 using Markdig.Syntax;
 using DocSharp.Docx;
 
-namespace Markdig.Renderers.Docx.Blocks;
+namespace Markdig.Renderers.Docx.Blocks {
 
 public class QuoteBlockRenderer : ContainerBlockParagraphRendererBase<QuoteBlock>
 {
@@ -37,4 +37,5 @@ public class QuoteBlockRenderer : ContainerBlockParagraphRendererBase<QuoteBlock
             }
         }
     }
+}
 }

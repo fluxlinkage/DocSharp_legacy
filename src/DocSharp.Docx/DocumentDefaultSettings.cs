@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocSharp.Docx;
+namespace DocSharp.Docx {
 
 public class DocumentDefaultSettings
 {
@@ -27,4 +27,5 @@ public class DocumentDefaultSettings
     /// Space between lines in multiple of lines. Default = 1.15
     /// </summary>
     public decimal LineSpacing { get; set; } = 1.15m;
+}
 }
